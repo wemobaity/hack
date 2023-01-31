@@ -64,19 +64,6 @@
         var long = position.coords.longitude
         var accuracy = position.coords.accuracy
 
-        con.connect(function(err) {
-          if (err) throw err;
-          console.log("Connected!");
-          var sql = "UPDATE ambulances SET Ambulance_latitude = lat, Ambulance_longitude = long WHERE id_ambulance = '001'";
-          con.query(sql, function (err, result) {
-           if (err) throw err;
-            console.log("1 record inserted");
-           });
-        });
-
-        con.end(function (err) {
-         // all open connections in the db cluster have ended
-        });
 
         if(marker) {
             map.removeLayer(marker)
@@ -95,5 +82,19 @@
 
         console.log("Your coordinate is: Lat: "+ lat +" Long: "+ long+ " Accuracy: "+ accuracy)
     }
+
+       con.connect(function(err) {
+          if (err) throw err;
+          console.log("Connected!");
+          var sql = "UPDATE ambulances SET Ambulance_latitude = getPosition.lat, Ambulance_longitude = getPosition.long WHERE id_ambulance = '001'";
+          con.query(sql, function (err, result) {
+           if (err) throw err;
+            console.log("1 record inserted");
+           });
+        });
+
+        con.end(function (err) {
+         // all open connections in the db cluster have ended
+        });
 
 </script>
