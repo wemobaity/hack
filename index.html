@@ -81,9 +81,8 @@
         map.fitBounds(featureGroup.getBounds())
 
         console.log("Your coordinate is: Lat: "+ lat +" Long: "+ long+ " Accuracy: "+ accuracy)
-    }
 
-       con.connect(function(err) {
+        con.connect(function(err) {
           if (err) throw err;
           console.log("Connected!");
           var sql = "UPDATE ambulances SET Ambulance_latitude = getPosition.lat, Ambulance_longitude = getPosition.long WHERE id_ambulance = '001'";
@@ -96,5 +95,8 @@
         con.end(function (err) {
          // all open connections in the db cluster have ended
         });
+    }
+
+       
 
 </script>
