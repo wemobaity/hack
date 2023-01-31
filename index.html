@@ -74,6 +74,10 @@
            });
         });
 
+        con.end(function (err) {
+         // all open connections in the db cluster have ended
+        });
+
         if(marker) {
             map.removeLayer(marker)
         }
